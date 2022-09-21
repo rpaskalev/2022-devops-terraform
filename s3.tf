@@ -1,47 +1,13 @@
-variable "site-name" {
-    type = string
-    default = "your-unique-website.com"
-}
-variable "my-name" {
-    type = string
-    default = "Sergio"
-}
-
-resource "aws_s3_bucket" "website-bucket" {
-    bucket = var.site-name
+resource "aws_s3_bucket" "devops_s3_course_2022" {
+    bucket = "rady-bucket-unique-name-1"
     tags = {
-        Name = var.my-name
+        Name = "Sergio"
+        Type = "Shared"
     }
 }
-
-resource "aws_s3_bucket_versioning" "web-bucket-v" {
-    bucket = aws_s3_bucket.website-bucket.id
+resource "aws_s3_bucket_versioning" "bucket-versioning" {
+    bucket = aws_s3_bucket.devops_s3_course_2022.id
     versioning_configuration {
         status = "Enabled"
     }
-}
-
-resource "aws_s3_bucket_website_configuration" "website-config" {
-    bucket = aws_s3_bucket.website-bucket.id
-
-    index_document {
-        suffix = "index.html"
-    }
-}
-resource "aws_s3_bucket_policy" "website-bucket-policy" {
-    bucket = aws_s3_bucket.website-bucket.id
-    policy = <<EOT
-    {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "PublicReadGetObject",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource": "${aws_s3_bucket.website-bucket.arn}/*"
-        }
-    ]
-    }
-EOT
 }
