@@ -13,9 +13,9 @@ terraform {
 
 terraform {
   backend "s3" {
-    bucket         = "rady-devops-3"
-    key            = "terraform/terraform.tfstate"
-    region         = "us-east-1"
+    bucket = "rady-devops-3"
+    key    = "terraform/terraform.tfstate"
+    region = "us-east-1"
     # dynamodb_table = "terraform-lock"
   }
 }
