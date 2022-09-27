@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "devops_s3_course_2022_moved_resource" {
-  bucket = "rady-bucket-unique-name"
+resource "aws_s3_bucket" "dzmitry_s3" {
+  bucket = var.bucket_name #"dzmitry-tf-first-bucket"
 
   tags = {
     Environment = "devops_2022"
@@ -9,4 +9,5 @@ resource "aws_s3_bucket" "devops_s3_course_2022_moved_resource" {
   versioning {
     enabled = true
   }
+  
 }

@@ -62,4 +62,16 @@ variable "tags" {
     }
 }
 
+#VARIAB S3
 
+variable "bucket_name" {
+    type = string
+    default = "dzmitry-tf-first-bucket"
+} 
+
+#VARIABLE SG
+######################################## ALREADY EXIST ABOVE
+# variable "sg_cidrs" {
+#     type = list
+#     default = ["0.0.0.0/0"]
+# }
