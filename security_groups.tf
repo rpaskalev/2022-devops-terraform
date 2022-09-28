@@ -4,18 +4,19 @@ resource "aws_security_group" "allow_tls" {
   vpc_id      = aws_vpc.main.id
 
   ingress {
-    description      = "ALL from VPC"
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = var.sg_cidrs #["0.0.0.0/0"]
+    description = "Inbound traffic"
+    from_port   = var.from_port_def
+    to_port     = var.to_port_def
+    protocol    = var.all_protocols
+    cidr_blocks = var.sg_cidrs
   }
 
   egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "Outboud traffic"
+    from_port   = var.from_port_def
+    to_port     = var.to_port_def
+    protocol    = var.all_protocols
+    cidr_blocks = var.sg_cidrs
   }
 
   tags = {

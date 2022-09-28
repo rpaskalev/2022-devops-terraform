@@ -1,15 +1,15 @@
 resource "aws_vpc" "main" {
-  cidr_block = var.vpc_cidr_block 
+  cidr_block = var.vpc_cidr_block
 
-    tags = {
+  tags = {
     Name = "2022-DevOps"
   }
 }
 
 resource "aws_subnet" "public_1" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.subnet_cidr_1 
-  availability_zone = var.az_subnet_1 
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = var.subnet_cidr_1
+  availability_zone = var.az_subnet_1
 
   tags = {
     Name = "Public"
@@ -17,8 +17,8 @@ resource "aws_subnet" "public_1" {
 }
 
 resource "aws_subnet" "public_2" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.subnet_cidr_2 
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = var.subnet_cidr_2
   availability_zone = var.az_subnet_2
 
   tags = {
@@ -27,8 +27,8 @@ resource "aws_subnet" "public_2" {
 }
 
 resource "aws_subnet" "private" {
-  vpc_id     = aws_vpc.main.id #resource dependancy
-  cidr_block = var.subnet_cidr_private
+  vpc_id            = aws_vpc.main.id #resource dependancy
+  cidr_block        = var.subnet_cidr_private
   availability_zone = var.az_private_subnet
 
   tags = {
@@ -45,7 +45,7 @@ resource "aws_internet_gateway" "gw" {
 }
 
 resource "aws_route_table" "example" {
-  vpc_id = aws_vpc.main.id 
+  vpc_id = aws_vpc.main.id
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -63,6 +63,6 @@ resource "aws_route_table_association" "a" {
 }
 
 resource "aws_route_table_association" "b" {
-  subnet_id    = aws_subnet.public_2.id
+  subnet_id      = aws_subnet.public_2.id
   route_table_id = aws_route_table.example.id
 }
