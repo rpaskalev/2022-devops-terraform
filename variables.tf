@@ -60,6 +60,29 @@ variable "tags" {
     default = {
         "Purpose" = "2022_DevOps"
     }
+
 }
+##########################
+#variable for s3
+##########################
+
+variable "bucket" {
+  description = "The name of the bucket. (forces new resource, default: unique random name)"
+  type        = string
+  default     = null
+}
+
+variable "tags" {
+  description = "A mapping of tags to assign to the bucket."
+  type        = map(string)
+  default     = {}
+}
+
+variable "versioning" {
+  description = "Boolean specifying enabled state of versioning or object containing detailed versioning configuration."
+  type        = any
+  default     = false
+}
+
 
 
