@@ -36,17 +36,12 @@ variable "az_private_subnet" {
 variable "ssh_key_name" {
   type        = string
   description = "key to use for SSH into the ec2 instance. I will leave it black, sub with your own"
-  #default     = ""
+  default     = "radostinpaskalev_key"
 }
 
 variable "instance_type" {
   type    = string
   default = "t2.micro"
-}
-
-variable "sg_cidrs" {
-  type    = list(any)
-  default = ["0.0.0.0/0"]
 }
 
 variable "ebs_optimized" {
@@ -71,7 +66,7 @@ variable "tags" {
 variable "bucket_name" {
   description = "Must be unique aws-wide"
   type        = string
-  default     = "2022-cool-terraform-class"
+  default     = "rady-bucket-test1"
 }
 
 variable "versioning" {
@@ -95,3 +90,22 @@ variable "all_protocols" {
   type    = string
   default = "-1"
 }
+
+variable "sg_cidrs" {
+  type    = list(any)
+  default = ["0.0.0.0/0"]
+}
+
+######
+# RDS VARS
+
+variable "db_engine" {
+  description = "possible values are also including mysql"
+  default     = "postgres"
+}
+
+variable "db_username" {
+  default = "admin1"
+}
+
+variable "db_password" {}
