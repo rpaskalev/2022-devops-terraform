@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "devops_s3_course_2022_moved_resource" {
-  bucket = var.bucket_name
+  bucket = "${data.aws_region.current.name}-${var.bucket_name}"
 
   versioning {
     enabled = var.versioning
@@ -14,4 +14,4 @@ resource "aws_s3_bucket" "devops_s3_course_2022_moved_resource" {
   force_destroy = true
 }
 
-
+data "aws_region" "current" {}

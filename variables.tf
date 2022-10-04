@@ -107,5 +107,3 @@ variable "db_engine" {
 variable "db_username" {
   default = "admin1"
 }
-
-variable "db_password" {}
