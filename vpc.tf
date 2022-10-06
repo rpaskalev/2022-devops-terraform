@@ -1,9 +1,13 @@
-resource "aws_vpc" "main" {
-  cidr_block = var.vpc_cidr_block
-
+locals {
   tags = {
     Name = "2022-DevOps"
   }
+}
+
+resource "aws_vpc" "main" {
+  cidr_block = var.vpc_cidr_block
+
+  tags = local.tags
 }
 
 resource "aws_subnet" "public_1" {
@@ -11,9 +15,9 @@ resource "aws_subnet" "public_1" {
   cidr_block        = var.subnet_cidr_1
   availability_zone = var.az_subnet_1
 
-  tags = {
+  tags = merge({
     Name = "Public"
-  }
+  },local.tags)
 }
 
 resource "aws_subnet" "public_2" {
