@@ -59,6 +59,8 @@ variable "tags" {
   default = {
     "Purpose"   = "2022_DevOps"
     "ManagedBy" = "Terraform"
+    "Purpose"   = "school"
+    Owner = "Dima"
   }
 }
 
