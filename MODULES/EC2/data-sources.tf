@@ -7,7 +7,3 @@ data "aws_ami" "example" {
     values = ["amzn2-ami-hvm-*-x86_64-gp2"]
   }
 }
-
-output "ami" {
-  value = data.aws_ami.example.id
-}
