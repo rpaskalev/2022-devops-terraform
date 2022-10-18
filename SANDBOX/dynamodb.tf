@@ -1,2 +1,4 @@
-module "dynamodb" {
-    source = "../MODULES/dynamodb.tf"
+# module "dynamodb" {
+#     source = "../MODULES/DYNAMODB"
+#     environment = var.environment
+# }

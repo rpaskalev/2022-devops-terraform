@@ -1,5 +1,5 @@
 resource "aws_iam_role" "s3_role" {
-  name = "test_role"
+  name = "${var.environment}-test-role"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -17,13 +17,10 @@ resource "aws_iam_role" "s3_role" {
     ]
 }
 EOF
-  tags = {
-    name = "ec2-s3-access"
-  }
 }
 
 resource "aws_iam_policy" "s3_policy" {
-  name        = "s3-access-policy"
+  name        = "${var.environment}-test-policy"
   path        = "/"
   description = "My s3 policy to be used by ec2s"
 
@@ -37,10 +34,8 @@ resource "aws_iam_policy" "s3_policy" {
       ],
       "Effect": "Allow",
       "Resource": [
-          "${aws_s3_bucket.devops_s3_course_2022_moved_resource.arn}",
-          "${aws_s3_bucket.devops_s3_course_2022_moved_resource.arn}/*",
-          "arn:aws:s3:::rady-devops-3",
-          "arn:aws:s3:::rady-devops-3/*"
+          "${var.bucket_arn}",
+          "${var.bucket_arn}/*"
       ]
     }
   ]
@@ -54,7 +49,7 @@ resource "aws_iam_role_policy_attachment" "test_attach" {
 }
 
 resource "aws_iam_instance_profile" "test_profile" {
-  name = "ec2_profile"
+  name = "${var.environment}-ec2-profile"
   role = aws_iam_role.s3_role.name
 }
 
