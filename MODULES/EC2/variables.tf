@@ -22,3 +22,7 @@ variable "ebs_optimized" {
 variable "security_group" {
     default = []
 }
+
+variable "instance_profile" {
+  default = null
+}

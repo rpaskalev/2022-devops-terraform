@@ -10,6 +10,6 @@ resource "aws_instance" "web" {
   ebs_optimized               = var.ebs_optimized
   user_data                   = local.my_bootstrap
   vpc_security_group_ids      = var.security_group
-  #iam_instance_profile        = aws_iam_instance_profile.test_profile.id
+  iam_instance_profile        = var.instance_profile
   associate_public_ip_address = true
 }
