@@ -1,5 +1,5 @@
 locals {
-  my_bootstrap = file("../FILES/userdata.sh")
+  my_bootstrap = file("../../MODULES/FILES/userdata.sh")
 }
 
 resource "aws_instance" "web" {
