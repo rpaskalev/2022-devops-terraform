@@ -12,4 +12,7 @@ resource "aws_instance" "web" {
   vpc_security_group_ids      = var.security_group
   iam_instance_profile        = var.instance_profile
   associate_public_ip_address = true
+  tags = {
+    Name = "SampleApp"
+  }
 }

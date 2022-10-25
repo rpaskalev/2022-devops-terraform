@@ -10,23 +10,17 @@ variable "vpc_cidr_block" {
 variable "subnet_cidr_private" {
 }
 
-variable "subnet_cidrs" {
-  default = [
-    "10.10.10.0/24",
-    "10.10.20.0/24"
-  ]
+variable "subnet_cidrs_1" {
+  default = "10.10.10.0/24"
 }
 
-variable "az_subnet" {
-  default = [
-    "us-east-1a",
-    "us-east-1b"
-  ]
-} 
+variable "subnet_cidrs_2" {
+  default = "10.10.20.0/24"
+}
 
 variable "az_subnet_1" {
   default = "us-east-1a"
-}
+} 
 
 variable "az_subnet_2" {
   default = "us-east-1b"

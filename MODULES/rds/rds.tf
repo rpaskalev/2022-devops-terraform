@@ -14,7 +14,7 @@ resource "aws_db_instance" "default" {
 
  resource "aws_db_subnet_group" "default" {
   name       = "main"
-  subnet_ids = [var.public_subnet_1,var.public_subnet_1]
+  subnet_ids = var.rds_subnets
 
   tags = {
     Name = "My DB subnet group"
@@ -31,13 +31,13 @@ resource "aws_ssm_parameter" "rds" {
   name  = "/devops2022/database/password"
   type  = "SecureString"
   value = random_password.password.result
-  key_id = aws_kms_key.database_key.key_id
+  # key_id = aws_kms_key.database_key.key_id
 }
 
-resource "aws_kms_key" "database_key" {
-  description             = "KMS key 1"
-  deletion_window_in_days = 7
-}
+# resource "aws_kms_key" "database_key" {
+#   description             = "KMS key 1"
+#   deletion_window_in_days = 7
+# }
 
 # #####apply existing parametr from AWS############
 # data "aws_ssm_parameter" "existing_ssm" {

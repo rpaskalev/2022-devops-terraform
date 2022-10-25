@@ -30,7 +30,7 @@ variable "security_group" {
     default = []
   }
 
-variable "public_subnet_1" {
+variable "rds_subnets" {
       default = ""
  
 }
