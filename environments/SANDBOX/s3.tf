@@ -1,5 +1,5 @@
 # module "s3" {
-#     source = "../MODULES//S3"
+#     source = "../../MODULES//S3"
 
 #     environment = var.environment
 #     create_s3 = true

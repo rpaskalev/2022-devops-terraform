@@ -1,5 +1,5 @@
 # module "users" {
-#     source = "../MODULES/USERS"
+#     source = "../../MODULES/USERS"
 
 #     environment = var.environment
 

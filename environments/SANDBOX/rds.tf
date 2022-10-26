@@ -1,5 +1,5 @@
 # module "rds" {
-#     source = "../modules/rds"
+#     source = "../../modules/rds"
 
 #     environment = var.environment
 #     security_group = [module.vpc.security_group_id]
