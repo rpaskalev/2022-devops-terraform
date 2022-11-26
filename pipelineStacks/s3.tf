@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "example" {
-  bucket = "ziyotek-vevops-2022-artifact-bucket"
+  bucket = "ziyotek-devops-2022-artifact-S3bucket"
   acl    = "private"
 
   force_destroy = true
